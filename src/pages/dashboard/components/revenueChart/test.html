@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+  <!-- BEGIN: Head-->
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"
+    />
+    <meta name="author" content="MKP Sfy" />
+    <title>Dashboard | Dashboard APPS2PAY</title>
+    <link
+      rel="apple-touch-icon"
+      href="https://apps2pay.mkpmobile.com/custom-resources/images/logo-mkp.png"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://apps2pay.mkpmobile.com/custom-resources/images/logo-mkp.png"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- BEGIN: VENDOR CSS-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://apps2pay.mkpmobile.com/template/vendors/vendors.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://apps2pay.mkpmobile.com/template/vendors/animate-css/animate.css"
+    />
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://apps2pay.mkpmobile.com/template/css/themes/vertical-modern-menu-template/materialize.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://apps2pay.mkpmobile.com/template/css/themes/vertical-modern-menu-template/style.css"
+    />
+    <!-- END: Page Level CSS-->
+    <!-- BEGIN: Custom CSS-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://apps2pay.mkpmobile.com/css/custom.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://apps2pay.mkpmobile.com/template/vendors/select2/select2.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://apps2pay.mkpmobile.com/template/vendors/select2/select2-materialize.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://apps2pay.mkpmobile.com/template/css/pages/form-select2.css"
+    />
+
+    <!-- END: Custom CSS-->
+  </head>
+  <!-- END: Head-->
+
+  <body
+    class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu preload-transitions 2-columns"
+    data-open="click"
+    data-menu="vertical-modern-menu"
+    data-col="2-columns"
+  >
+    <!-- BEGIN: Header-->
+    <header class="page-topbar" id="header">
+      <div class="navbar navbar-fixed">
+        <nav
+          class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-dark gradient-45deg-indigo-blue no-shadow"
+        >
+          <div class="nav-wrapper">
+            <div class="header-search-wrapper hide-on-med-and-down">
+              <i class="material-icons">search</i>
+              <input
+                class="header-search-input z-depth-2"
+                type="text"
+                name="Search"
+                placeholder="Cari Halaman"
+                data-search="template-list"
+              />
+              <ul class="search-list collection display-none"></ul>
+            </div>
+            <ul class="navbar-list right">
+              <li>
+                <span class="hide-on-med-and-down mr-12">ADMIN CARTENZ</span>
+              </li>
+              <li class="hide-on-med-and-down">
+                <a
+                  class="waves-effect waves-block waves-light toggle-fullscreen"
+                  href="javascript:void(0);"
+                  ><i class="material-icons">settings_overscan</i></a
+                >
+              </li>
+              <li class="hide-on-large-only search-input-wrapper">
+                <a
+                  class="waves-effect waves-block waves-light search-button"
+                  href="javascript:void(0);"
+                  ><i class="material-icons">search</i></a
+                >
+              </li>
+
+              <li>
+                <a
+                  class="waves-effect waves-block waves-light profile-button"
+                  href="javascript:void(0);"
+                  data-target="profile-dropdown"
+                  ><i class="avatar-status avatar-online material-icons"
+                    >person</i
+                  ></a
+                >
+              </li>
+            </ul>
+            <!-- notifications-dropdown-->
+
+            <!-- profile-dropdown-->
+            <ul class="dropdown-content" id="profile-dropdown">
+              <li>
+                <a
+                  class="grey-text text-darken-1"
+                  onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();"
+                  ><i class="material-icons">keyboard_tab</i> Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+          <nav class="display-none search-sm">
+            <div class="nav-wrapper">
+              <form id="navbarForm">
+                <div class="input-field search-input-sm">
+                  <input
+                    class="search-box-sm mb-0"
+                    type="search"
+                    required=""
+                    id="search"
+                    placeholder="Explore Materialize"
+                    data-search="template-list"
+                  />
+                  <label class="label-icon" for="search"
+                    ><i class="material-icons search-sm-icon">search</i></label
+                  ><i class="material-icons search-sm-close">close</i>
+                  <ul
+                    class="search-list collection search-list-sm display-none"
+                  ></ul>
+                </div>
+              </form>
+            </div>
+          </nav>
+        </nav>
+      </div>
+    </header>
+    <!-- END: Header-->
+
+    <ul class="display-none" id="page-search-title">
+      <li class="auto-suggestion-title">
+        <a class="collection-item" href="#">
+          <h6 class="search-title">PAGES</h6></a
+        >
+      </li>
+    </ul>
+    <ul class="display-none" id="search-not-found">
+      <li class="auto-suggestion">
+        <a class="collection-item display-flex align-items-center" href="#"
+          ><span class="material-icons">error_outline</span
+          ><span class="member-info">No results found.</span></a
+        >
+      </li>
+    </ul>
+
+    <!-- BEGIN: SideNav-->
+    <aside
+      class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square"
+    >
+      <div class="brand-sidebar">
+        <h1 class="logo-wrapper" align="left">
+          <a
+            class="brand-logo darken-1"
+            href="https://apps2pay.mkpmobile.com/dashboard"
+          >
+            <div class="valign-wrapper">
+              <img
+                class="hide-on-med-and-down ml-3"
+                src="https://apps2pay.mkpmobile.com/custom-resources/images/logo-mkp.png"
+                alt="mkp logo"
+              />
+              <img
+                class="show-on-medium-and-down hide-on-med-and-up"
+                src="https://apps2pay.mkpmobile.com/custom-resources/images/logo-mkp.png"
+                alt="materialize logo"
+              />
+              <span class="logo-text hide-on-med-and-down">MKP Mobile</span>
+            </div>
+          </a>
+          <a class="navbar-toggler" href="#"
+            ><i class="material-icons">radio_button_checked</i></a
+          >
+        </h1>
+      </div>
+      <ul
+        class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow"
+        id="slide-out"
+        data-menu="menu-navigation"
+        data-collapsible="menu-accordion"
+      >
+        <li class="active">
+          <a
+            class="waves-effect waves-cyan active gradient-45deg-indigo-blue gradient-shadow"
+            href="https://apps2pay.mkpmobile.com/dashboard"
+          >
+            <i class="material-icons">home</i
+            ><span class="menu-title">Dashboard</span></a
+          >
+        </li>
+
+        <li class="bold">
+          <a
+            class="collapsible-header waves-effect waves-cyan"
+            href="JavaScript:void(0)"
+          >
+            <i class="material-icons">insert_chart</i
+            ><span class="menu-title">Laporan</span></a
+          >
+          <div class="collapsible-body">
+            <ul
+              class="collapsible collapsible-sub"
+              data-collapsible="accordion"
+            ></ul>
+
+            <ul
+              class="collapsible collapsible-sub"
+              data-collapsible="accordion"
+            >
+              <li>
+                <a
+                  class=""
+                  href="https://apps2pay.mkpmobile.com/laporan_transaksi_sukses"
+                >
+                  <i class="material-icons">radio_button_unchecked</i
+                  ><span>Success Transaction</span></a
+                >
+              </li>
+            </ul>
+            <ul
+              class="collapsible collapsible-sub"
+              data-collapsible="accordion"
+            >
+              <li>
+                <a
+                  class=""
+                  href="https://apps2pay.mkpmobile.com/laporan_transaksi_sukses_settlement"
+                >
+                  <i class="material-icons">radio_button_unchecked</i
+                  ><span>Settled Transaction</span></a
+                >
+              </li>
+            </ul>
+            <ul
+              class="collapsible collapsible-sub"
+              data-collapsible="accordion"
+            >
+              <li>
+                <a
+                  class=""
+                  href="https://apps2pay.mkpmobile.com/laporan_transaksi_list"
+                >
+                  <i class="material-icons">radio_button_unchecked</i
+                  ><span>List Transaction</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="bold">
+          <a
+            class="waves-effect waves-cyan"
+            href="https://apps2pay.mkpmobile.com/logout"
+            onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();"
+          >
+            <i class="material-icons">power_settings_new</i
+            ><span class="menu-title">Logout</span></a
+          >
+
+          <form
+            id="logout-form"
+            action="https://apps2pay.mkpmobile.com/logout"
+            method="POST"
+            style="display: none"
+          >
+            <input
+              type="hidden"
+              name="_token"
+              value="XQ6qTjJ8kWKDhQ9zxvaMygcpNdiVMBwsKm5FpApt"
+            />
+          </form>
+        </li>
+      </ul>
+      <div class="navigation-background"></div>
+      <a
+        class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium gradient-45deg-indigo-light-blue waves-effect waves-light hide-on-large-only"
+        href="#"
+        data-target="slide-out"
+        ><i class="material-icons">menu</i></a
+      >
+    </aside>
+    <!-- END: SideNav-->
+
+    <!-- BEGIN: Page Main-->
+    <div id="main">
+      <div class="row" id="app">
+        <div v-cloak>
+          <div class="container">
+            <div class="section">
+              <!--card stats start-->
+              <div class="row mt-0">
+                <div class="col s12 m12 l12">
+                  <h4 class="header no-margin">Dashboard Analisis</h4>
+                </div>
+                <form
+                  @submit.prevent="refreshPage()"
+                  @keydown="formFilter.onKeydown($event)"
+                  class="row"
+                >
+                  <div class="row col s12" style="align-items: flex-end">
+                    <div class="col l3 m12 s12">
+                      <select
+                        id="corporate"
+                        class="select2 browser-default"
+                        data-placeholder="Pilih Corporate..."
+                        v-model="formFilter.corporate"
+                        v-select2="formFilter.corporate"
+                        data-minimum-results-for-search="1"
+                      >
+                        <option value="00">SEMUA CORPORATE</option>
+                        <option
+                          v-for="item in corporateList"
+                          :key="item.id"
+                          :value="item.id"
+                        >
+                          {{ item.uraian }}
+                        </option>
+                      </select>
+                    </div>
+                    <div class="col l3 m4 s5">
+                      <input
+                        type="text"
+                        class="datepicker"
+                        id="startDate"
+                        @change="vueDateChanged('startDate')"
+                      />
+                    </div>
+                    <div class="col l1 m1 s1 center-align mb-1">
+                      <label for="s/d">s/d</label>
+                    </div>
+                    <div class="col l3 m4 s5">
+                      <input
+                        type="text"
+                        class="datepicker"
+                        id="endDate"
+                        @change="vueDateChanged('endDate')"
+                      />
+                    </div>
+                    <div class="col l2 m12 s12">
+                      <button
+                        type="submit"
+                        class="btn waves-effect waves-light gradient-45deg-indigo-blue mr-3 mb-3"
+                      >
+                        <i class="material-icons left">loop</i>Filter
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="row">
+                <div class="col s12 m6 l6 xl4">
+                  <div
+                    class="card gradient-45deg-indigo-light-blue gradient-shadow min-height-100 white-text animate fadeRight"
+                  >
+                    <div class="padding-4">
+                      <div class="row">
+                        <div class="col s2">
+                          <i class="material-icons background-round mt-5"
+                            ><img
+                              style="width: 30px"
+                              src="https://apps2pay.mkpmobile.com/template/images/avatar/icon-income.png"
+                              alt="avatar"
+                          /></i>
+                          <p></p>
+                        </div>
+                        <div class="col s10 right-align">
+                          <h5
+                            class="mb-0 white-text"
+                            v-text="cardSummary.income"
+                          ></h5>
+                          <p class="no-margin"></p>
+                          <p class="mb-0">Omset</p>
+                          <p class="no-margin" v-text="summary.infoDate"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col s12 m6 l6 xl4">
+                  <div
+                    class="card gradient-45deg-indigo-light-blue gradient-shadow min-height-100 white-text animate fadeLeft"
+                  >
+                    <div class="padding-4">
+                      <div class="row">
+                        <div class="col s2">
+                          <i class="material-icons background-round mt-5"
+                            >account_balance_wallet</i
+                          >
+                          <p></p>
+                        </div>
+                        <div class="col s10 right-align">
+                          <h5
+                            class="mb-0 white-text"
+                            v-text="cardSummary.servicefee"
+                          ></h5>
+                          <p class="no-margin"></p>
+                          <p class="mb-0">Service Fee</p>
+                        </div>
+                        <div class="col s12 right-align">
+                          <p class="no-margin" v-text="summary.infoDate"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col s12 m12 l12 xl4">
+                  <div
+                    class="card gradient-45deg-light-blue-cyan gradient-shadow min-height-100 white-text animate fadeLeft"
+                  >
+                    <div class="padding-4">
+                      <div class="row">
+                        <div class="col s2">
+                          <i class="material-icons background-round mt-5"
+                            ><img
+                              style="width: 30px"
+                              src="https://apps2pay.mkpmobile.com/template/images/avatar/icon-transaksi.png"
+                              alt="avatar"
+                          /></i>
+                          <p></p>
+                        </div>
+                        <div class="col s10 right-align">
+                          <h5
+                            class="mb-0 white-text"
+                            v-text="cardSummary.count"
+                          ></h5>
+                          <p class="no-margin"></p>
+                          <p class="mb-0">Transaksi</p>
+                          <p class="no-margin" v-text="summary.infoDate"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end container-->
+
+              <div class="row">
+                <div class="col l8 m8">
+                  <div class="card animate fadeLeft mb-0">
+                    <div class="card-content pt-1 pb-0">
+                      <h4 class="header mb-0 mt-0 ml-3">Revenue</h4>
+                      <p class="medium-small grey-text ml-3">
+                        Grafis Revenue (Nominal dan Jumlah trx)
+                      </p>
+                      <div
+                        class="justify-content-between flex-wrap center-align mb-0 mt-1"
+                      >
+                        <h4 class="card-title mt-0 mb-0">
+                          Komparasi Summary Omset - Transaksi
+                        </h4>
+                        <h6
+                          class="header mt-0 center-align"
+                          style="font-size: 14px"
+                          v-text="summary.dateKomparasi"
+                        ></h6>
+                      </div>
+                      <div class="row">
+                        <div class="col l10 m10 s10 ml-3">
+                          <label class="inline">
+                            <input
+                              name="radioType"
+                              type="radio"
+                              v-model="formDaily.type"
+                              value="daily"
+                              @change="refreshChartKomparasi()"
+                            />
+                            <span>Harian</span>
+                          </label>
+                          <label class="inline">
+                            <input
+                              name="radioType"
+                              type="radio"
+                              v-model="formDaily.type"
+                              value="weekly"
+                              checked
+                              @change="refreshChartKomparasi()"
+                            />
+                            <span>Mingguan</span>
+                          </label>
+                          <label class="inline">
+                            <input
+                              name="radioType"
+                              type="radio"
+                              v-model="formDaily.type"
+                              value="monthly"
+                              @change="refreshChartKomparasi()"
+                            />
+                            <span>Bulanan</span>
+                          </label>
+                          <label class="inline">
+                            <input
+                              name="radioType"
+                              type="radio"
+                              v-model="formDaily.type"
+                              value="yearly"
+                              @change="refreshChartKomparasi()"
+                            />
+                            <span>Tahunan</span>
+                          </label>
+                        </div>
+                        <div class="col s12">
+                          <div class="">
+                            <apexchart
+                              ref="chartKomparasi"
+                              height="250"
+                              type="bar"
+                              :options="chartKomparasi.chartOptions"
+                              :series="chartKomparasi.series"
+                            ></apexchart>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col l4 m4">
+                  <div class="card animate fadeLeft mb-0">
+                    <div class="card-content blue lighten-2 no-padding">
+                      <div
+                        class="display-flex justify-content-between flex-wrap mb-0"
+                      >
+                        <h4 class="header mb-0 mt-0 ml-3 white-text">
+                          Revenue
+                        </h4>
+                        <p class="medium-small ml-3 white-text">
+                          Grafis Revenue <span v-text="summary.infoDate"></span>
+                        </p>
+                      </div>
+                      <div class="row">
+                        <div class="col s12">
+                          <apexchart
+                            ref="chartIncome"
+                            height="165"
+                            type="area"
+                            :options="chartIncome.chartOptions"
+                            :series="chartIncome.series"
+                          ></apexchart>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-content blue darken-4 no-padding">
+                      <div class="row">
+                        <div class="col s12">
+                          <apexchart
+                            ref="chartTrx"
+                            height="165"
+                            type="area"
+                            :options="chartTrx.chartOptions"
+                            :series="chartTrx.series"
+                          ></apexchart>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col l12 m12">
+                  <div class="card animate fadeLeft mb-0">
+                    <div class="card-content">
+                      <div
+                        class="display-flex justify-content-between flex-wrap mb-1"
+                      >
+                        <h4 class="card-title">Traffic Gross Transaction</h4>
+                        <div class="header-elements">
+                          <input
+                            type="text"
+                            class="datepicker"
+                            id="forDate"
+                            :value="formFilter.forDate"
+                            placeholder="Pilih Tanggal"
+                            @change="vueDateChanged('forDate')"
+                          />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col s12">
+                          <apexchart
+                            ref="chartTiketTrafik"
+                            height="300"
+                            type="area"
+                            :options="chartTiketTrafik.chartOptions"
+                            :series="chartTiketTrafik.series"
+                          ></apexchart>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col l12 m12">
+                  <div class="card animate fadeLeft mb-0">
+                    <div class="card-content">
+                      <div
+                        class="display-flex justify-content-between flex-wrap mb-1"
+                      >
+                        <h4 class="card-title">
+                          Last Week's Gross Transaction by Payment Categories
+                        </h4>
+                      </div>
+                      <div class="row">
+                        <div class="col s12">
+                          <apexchart
+                            ref="chartIncomeCategory"
+                            height="300"
+                            type="line"
+                            :options="chartIncomeCategory.chartOptions"
+                            :series="chartIncomeCategory.series"
+                          ></apexchart>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-overlay"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END: Page Main-->
+
+    <!-- BEGIN: Footer-->
+
+    <footer
+      class="page-footer footer footer-static footer-light navbar-border navbar-shadow"
+    >
+      <div class="footer-copyright">
+        <div class="container">
+          <span class="right"
+            >&copy; 2020
+            <a href="https://www.google.com/" target="_blank">MKP</a> All rights
+            reserved.</span
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- END: Footer-->
+    <!-- BEGIN VENDOR JS-->
+    <script src="https://apps2pay.mkpmobile.com/js/app.js"></script>
+    <script src="https://apps2pay.mkpmobile.com/template/js/vendors.min.js"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <script src="https://apps2pay.mkpmobile.com/template/js/plugins.js"></script>
+    <script src="https://apps2pay.mkpmobile.com/template/js/search.js"></script>
+    <script src="https://apps2pay.mkpmobile.com/template/js/custom/custom-script.js"></script>
+    <!-- END THEME  JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+
+    <script src="https://apps2pay.mkpmobile.com/template/vendors/select2/select2.full.min.js"></script>
+
+    <script>
+      const DeleteConfirmation = swal.mixin({
+        title: "Apakah Anda Yakin?",
+        text: "Data ini akan dihapus!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#6c757d",
+        confirmButtonText: "Hapus",
+        cancelButtonText: "Batal",
+      });
+
+      const SettleConfirmation = swal.mixin({
+        title: "Apakah Anda Yakin?",
+        text: "Data ini akan disettle!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#75ba7a",
+        cancelButtonColor: "#6c757d",
+        confirmButtonText: "OK",
+        cancelButtonText: "Batal",
+      });
+
+      const LoadingScreen = swal.mixin({
+        title: "Mohon ditunggu...",
+        icon: "info",
+        showCancelButton: false,
+        showConfirmButton: false,
+      });
+
+      const Toast = swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        onOpen: (toast) => {
+          toast.addEventListener("mouseenter", swal.stopTimer);
+          toast.addEventListener("mouseleave", swal.resumeTimer);
+        },
+      });
+      function toast(icon, message) {
+        Toast.fire({
+          icon: icon,
+          title: message,
+        });
+      }
+      function basicFormSuccess(message) {
+        toast("success", message);
+      }
+      function basicFormErrorDuplicat(message) {
+        toast("error", message);
+      }
+      function basicFormErrorUplaod(payload) {
+        console.log(payload);
+
+        if (payload.response.status == 406) {
+          swal.fire("Warning!", payload.response.data.message, "warning");
+        } else {
+          toast("error", "Hanya file .xslx");
+        }
+      }
+      function basicFormError(payload) {
+        console.log(payload);
+
+        if (payload.response.status == 406) {
+          swal.fire("Warning!", payload.response.data.message, "warning");
+        } else {
+          toast("error", "An internal error occurred");
+        }
+      }
+      function basicFormLoading(toggle) {
+        console.log(toggle);
+        if (toggle == "loading") {
+          LoadingScreen.fire();
+        } else {
+          swal.close();
+        }
+      }
+
+      function formatRupiah(angka, prefix = 1) {
+        if (angka == "Infinity") {
+          format_angka = angka.toFixed(prefix);
+          simbol = "";
+        } else if (angka < 1000) {
+          if (angka === parseInt(angka, 10)) {
+            format_angka = angka.toFixed(0);
+          } else {
+            format_angka = angka.toFixed(prefix);
+          }
+          simbol = "";
+        } else if (angka < 1000000) {
+          angka = angka / 1000;
+          if (angka === parseInt(angka, 10)) {
+            format_angka = angka.toFixed(0);
+          } else {
+            format_angka = angka.toFixed(prefix);
+          }
+          simbol = " rb";
+        } else if (angka < 1000000000) {
+          angka = angka / 1000000;
+          if (angka === parseInt(angka, 10)) {
+            format_angka = angka.toFixed(0);
+          } else {
+            format_angka = angka.toFixed(prefix);
+          }
+          simbol = " jt";
+        } else if (angka < 1000000000000) {
+          angka = angka / 1000000000;
+          if (angka === parseInt(angka, 10)) {
+            format_angka = angka.toFixed(0);
+          } else {
+            format_angka = angka.toFixed(prefix);
+          }
+          simbol = " M";
+        } else {
+          angka = angka / 1000000000000;
+          if (angka === parseInt(angka, 10)) {
+            format_angka = angka.toFixed(0);
+          } else {
+            format_angka = angka.toFixed(prefix);
+          }
+          simbol = " T";
+        }
+        return format_angka + simbol;
+      }
+    </script>
+    <script>
+      // setTimeout(function() {
+      //     console.log(formatRupiah(30000));
+      // }, 2000);
+
+      // function changesHelper(field){
+      //     app.vueChangesHelper(field)
+      // }
+
+      var app = new Vue({
+        el: "#app",
+        data: {
+          corporateList: [{ id: 212, uraian: "CARTENZ" }],
+          produkAll: [
+            { id: 36, nama: "PRODUK UMUM" },
+            { id: 37, nama: "MAKANAN DEMO" },
+            { id: 38, nama: "DEMO PRODUK" },
+            { id: 39, nama: "MOTOR" },
+            { id: 40, nama: "MOBIL" },
+          ],
+          month: [
+            "2023-12",
+            "2023-11",
+            "2023-10",
+            "2023-09",
+            "2023-08",
+            "2023-07",
+            "2023-06",
+            "2023-05",
+            "2023-04",
+            "2023-03",
+            "2023-02",
+            "2023-01",
+            "2022-12",
+          ],
+          payloadKomparasiGrafik: [],
+          formFilter: new Form({
+            forDate: moment().format("YYYY-MM-DD"),
+            monthFilter: "",
+            corporate: "00",
+            startDate: moment().format("YYYY-MM-01"),
+            endDate: moment().format("YYYY-MM-DD"),
+          }),
+          formDaily: new Form({
+            type: "weekly",
+            show: "trx",
+          }),
+          summary: new Form({
+            infoDate:
+              moment().format("01 MMM YYYY") +
+              " s/d " +
+              moment().format("DD MMM YYYY"),
+            dateKomparasi: moment().format("MMM YYYY"),
+          }),
+          cardSummary: new Form({
+            count: 0,
+            income: "Rp0",
+            servicefee: "Rp0",
+          }),
+          chartIncome: {
+            chartOptions: {
+              colors: ["#ffffff"],
+              chart: {
+                toolbar: {
+                  show: false,
+                },
+              },
+              plotOptions: {
+                bar: {
+                  // columnWidth: '45%',
+                  dataLabels: {
+                    position: "top", // top, center, bottom
+                  },
+                  // distributed: true
+                },
+              },
+              legend: {
+                show: true,
+              },
+              stroke: {
+                show: true,
+                width: 3,
+                curve: "smooth",
+                // colors: ['transparent']
+              },
+              tooltip: {
+                x: {
+                  show: true,
+                },
+                y: {
+                  title: {
+                    formatter: function () {
+                      return "";
+                    },
+                  },
+                  formatter: function (value) {
+                    return value == 0
+                      ? 0
+                      : value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                  },
+                },
+              },
+              dataLabels: {
+                enabled: false,
+              },
+              fill: {
+                opacity: 1,
+              },
+              yaxis: {
+                labels: {
+                  formatter: function (value) {
+                    return value == 0 ? 0 : formatRupiah(value);
+                    // return value == 0 ? 0 : value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+                  },
+                  style: {
+                    colors: "#ffffff",
+                  },
+                },
+                title: {
+                  text: "Jumlah Omset (Rp)",
+                  style: {
+                    color: "#ffffff",
+                  },
+                },
+              },
+              xaxis: {
+                labels: {
+                  rotate: 0,
+                  hideOverlappingLabels: true,
+                  style: {
+                    colors: "#ffffff",
+                  },
+                },
+              },
+            },
+          },
+          chartTrx: {
+            chartOptions: {
+              colors: ["#ffffff"],
+              chart: {
+                toolbar: {
+                  show: false,
+                },
+              },
+              plotOptions: {
+                bar: {
+                  // columnWidth: '45%',
+                  dataLabels: {
+                    position: "top", // top, center, bottom
+                  },
+                  // distributed: true
+                },
+              },
+              legend: {
+                show: true,
+              },
+              stroke: {
+                show: true,
+                width: 3,
+                curve: "smooth",
+                // colors: ['transparent']
+              },
+              tooltip: {
+                x: {
+                  show: true,
+                },
+                y: {
+                  title: {
+                    formatter: function () {
+                      return "";
+                    },
+                  },
+                  formatter: function (value) {
+                    return value == 0
+                      ? 0
+                      : value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                  },
+                },
+              },
+              dataLabels: {
+                enabled: false,
+              },
+              fill: {
+                opacity: 1,
+              },
+              yaxis: {
+                labels: {
+                  formatter: function (value) {
+                    return value == 0 ? 0 : formatRupiah(value);
+                    // return value == 0 ? 0 : value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+                  },
+                  style: {
+                    colors: "#ffffff",
+                  },
+                },
+                title: {
+                  text: "Jumlah Transaksi (Trx)",
+                  style: {
+                    color: "#ffffff",
+                  },
+                },
+              },
+              xaxis: {
+                labels: {
+                  rotate: 0,
+                  hideOverlappingLabels: true,
+                  style: {
+                    colors: "#ffffff",
+                  },
+                },
+              },
+            },
+          },
+          chartIncomeCategory: {
+            chartOptions: {
+              chart: {
+                toolbar: {
+                  show: true,
+                },
+                zoom: {
+                  enabled: true,
+                },
+              },
+              colors: [
+                "#028ffb",
+                "#04e396",
+                "#feaf1d",
+                "#fe4661",
+                "#785ed0",
+                "#0097a7",
+                "#ff8f00",
+                "#ff8f00",
+                "#c2185b",
+                "#00b8d4",
+              ],
+              plotOptions: {
+                bar: {
+                  // columnWidth: '45%',
+                  dataLabels: {
+                    position: "top", // top, center, bottom
+                  },
+                  // distributed: true
+                },
+              },
+              markers: {
+                size: 5,
+              },
+              // dataLabels: {
+              //     enabled: true,
+              //     formatter: function (value) {
+              //         return value == 0 ? 0 : value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+              //     },
+              //     offsetY: -20,
+              //     style: {
+              //         fontSize: '12px',
+              //         // colors: ["#304758"]
+              //     }
+              // },
+              legend: {
+                show: true,
+              },
+              stroke: {
+                show: true,
+                width: 3,
+                curve: "smooth",
+                // colors: ['transparent']
+              },
+              tooltip: {
+                x: {
+                  show: true,
+                },
+                y: {
+                  title: {
+                    formatter: function () {
+                      return "";
+                    },
+                  },
+                  formatter: function (value) {
+                    return value == 0
+                      ? 0
+                      : value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                  },
+                },
+              },
+              // dataLabels: {
+              //     enabled: false
+              // },
+              fill: {
+                opacity: 1,
+              },
+              yaxis: {
+                labels: {
+                  formatter: function (value) {
+                    return value == 0 ? 0 : formatRupiah(value);
+                    // return value == 0 ? 0 : value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+                  },
+                },
+                title: {
+                  text: "Jumlah Omset (Rp)",
+                },
+              },
+              xaxis: {},
+            },
+          },
+          chartKomparasi: {
+            chartOptions: {
+              chart: {
+                toolbar: {
+                  show: true,
+                },
+                zoom: {
+                  enabled: true,
+                },
+              },
+              colors: ["#fe4661"],
+              plotOptions: {
+                bar: {
+                  dataLabels: {
+                    position: "top", // top, center, bottom
+                  },
+                },
+              },
+              legend: {
+                show: false,
+              },
+              tooltip: {
+                x: {
+                  show: true,
+                },
+                y: {
+                  title: {
+                    formatter: function () {
+                      return "";
+                    },
+                  },
+                  formatter: function (
+                    val,
+                    { series, seriesIndex, dataPointIndex, w }
+                  ) {
+                    return app.chartPerformFormatter(
+                      "komparasi",
+                      dataPointIndex,
+                      val
+                    );
+                  },
+                },
+              },
+              dataLabels: {
+                enabled: false,
+              },
+              yaxis: {
+                labels: {
+                  formatter: function (value) {
+                    return value == 0 ? 0 : formatRupiah(value);
+                  },
+                },
+                title: {
+                  text: "Jumlah Omset (Rp)",
+                },
+              },
+              xaxis: {},
+            },
+          },
+          chartTiketTrafik: {
+            chartOptions: {
+              colors: ["#EA3546"],
+              chart: {
+                toolbar: {
+                  show: true,
+                },
+              },
+              plotOptions: {
+                bar: {
+                  // columnWidth: '45%',
+                  dataLabels: {
+                    position: "top", // top, center, bottom
+                  },
+                  // distributed: true
+                },
+              },
+              markers: {
+                size: 5,
+              },
+              legend: {
+                show: true,
+              },
+              stroke: {
+                show: true,
+                width: 3,
+                curve: "smooth",
+                // colors: ['transparent']
+              },
+              tooltip: {
+                x: {
+                  show: true,
+                },
+                y: {
+                  title: {
+                    formatter: function () {
+                      return "";
+                    },
+                  },
+                  formatter: function (value) {
+                    return value == 0
+                      ? 0
+                      : value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                  },
+                },
+              },
+              dataLabels: {
+                enabled: false,
+              },
+              fill: {
+                opacity: 1,
+              },
+              yaxis: {
+                labels: {
+                  formatter: function (value) {
+                    return value == 0 ? 0 : formatRupiah(value);
+                    // return value == 0 ? 0 : value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+                  },
+                },
+                title: {
+                  text: "Jumlah Transaksi",
+                },
+              },
+              xaxis: {},
+            },
+          },
+        },
+        mounted() {
+          $(".select2").select2();
+
+          $("#forDate").val(this.formFilter.forDate).trigger("change");
+          $("#startDate").val(this.formFilter.startDate).trigger("change");
+          $("#endDate").val(this.formFilter.endDate).trigger("change");
+          setTimeout(() => {
+            var instance1 = M.Datepicker.getInstance($("#forDate"));
+            instance1.setDate(this.formFilter.forDate);
+
+            var instance1 = M.Datepicker.getInstance($("#startDate"));
+            instance1.setDate(this.formFilter.startDate);
+
+            var instance2 = M.Datepicker.getInstance($("#endDate"));
+            instance2.setDate(this.formFilter.endDate);
+
+            this.refreshCard();
+            this.refreshChart();
+            this.refreshChartPerCategory();
+            this.refreshChartKomparasi();
+            this.vueChangedTrafik();
+
+            // var sock = io.connect('', { path: '/sock/server/socket.io/', secure:true, transport:['websocket', 'polling'] });
+            // sock.on('update-chart', function (data){
+            // app.refreshCard();
+            // app.refreshChart();
+            // app.refreshChartPerCategory();
+            // app.refreshChartKomparasi();
+            // app.vueChangedTrafik();
+            // });
+          }, 100);
+        },
+        methods: {
+          refreshPage() {
+            this.summary.infoDate =
+              moment(this.formFilter.startDate).format("DD MMM YYYY") +
+              " s/d " +
+              moment(this.formFilter.endDate).format("DD MMM YYYY");
+            this.refreshCard();
+            this.refreshChart();
+          },
+          refreshCard() {
+            axios
+              .post("https://apps2pay.mkpmobile.com/dashboard/update_card", {
+                corporate: this.formFilter.corporate,
+                startDate: this.formFilter.startDate,
+                endDate: this.formFilter.endDate,
+              })
+              .then((response) => {
+                this.cardSummary.fill(response.data);
+              })
+              .catch((e) => {
+                basicFormError(e);
+              });
+          },
+          vueChangesHelper(field) {
+            if (field == "item") {
+              this.formFilter.monthFilter = $("#monthFilter").val();
+              this.refreshChart();
+            }
+            if (field == "show") {
+              this.formDaily.show = $("#show").val();
+              this.refreshChartKomparasi();
+            }
+            if (field == "corporate") {
+              // this.formFilter.corporate = $('#corporate').val();
+              this.refreshCard();
+              this.refreshChart();
+              this.refreshChartPerCategory();
+              this.refreshChartKomparasi();
+              this.vueChangedTrafik();
+            }
+          },
+          vueDateChanged(field) {
+            if (field == "startDate") {
+              this.formFilter.startDate = $("#startDate").val();
+            }
+            if (field == "endDate") {
+              this.formFilter.endDate = $("#endDate").val();
+            }
+            if (field == "forDate") {
+              this.formFilter.forDate = $("#forDate").val();
+              this.vueChangedTrafik();
+            }
+          },
+          currencyFormat(number) {
+            if (number)
+              return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            else return 0;
+          },
+          refreshChart() {
+            this.formFilter.monthFilter = $("#monthFilter").val();
+
+            axios
+              .post("https://apps2pay.mkpmobile.com/dashboard/chart_income", {
+                corporate: this.formFilter.corporate,
+                startDate: this.formFilter.startDate,
+                endDate: this.formFilter.endDate,
+              })
+              .then((response) => {
+                this.$refs.chartIncome.updateOptions({
+                  xaxis: {
+                    categories: response.data["categories"],
+                  },
+                });
+                this.$refs.chartIncome.updateSeries(
+                  response.data["seriesAmount"]
+                );
+
+                this.$refs.chartTrx.updateOptions({
+                  xaxis: {
+                    categories: response.data["categories"],
+                  },
+                });
+                this.$refs.chartTrx.updateSeries(response.data["seriesCount"]);
+              })
+              .catch((e) => {
+                basicFormError(e);
+              });
+          },
+          refreshChartPerCategory() {
+            axios
+              .post(
+                "https://apps2pay.mkpmobile.com/dashboard/chart_income_category",
+                {
+                  corporate: this.formFilter.corporate,
+                }
+              )
+              .then((response) => {
+                this.$refs.chartIncomeCategory.updateOptions({
+                  xaxis: {
+                    categories: response.data["categories"],
+                  },
+                });
+                this.$refs.chartIncomeCategory.updateSeries(
+                  response.data["series"]
+                );
+              })
+              .catch((e) => {
+                basicFormError(e);
+              });
+          },
+          chartPerformFormatter(type, index, val) {
+            if (type == "komparasi") {
+              if ((val = 0)) return 0;
+              return (
+                "Rp. " +
+                this.currencyFormat(
+                  this.payloadKomparasiGrafik["seriesAmount"][1]["data"][index]
+                ) +
+                ", " +
+                this.payloadKomparasiGrafik["seriesCount"][0]["data"][index] +
+                " Trx "
+              );
+            }
+          },
+          refreshChartKomparasi() {
+            if (
+              this.formDaily.type == "daily" ||
+              this.formDaily.type == "weekly"
+            ) {
+              this.summary.dateKomparasi = moment().format("MMMM YYYY");
+            } else if (this.formDaily.type == "yearly") {
+              this.summary.dateKomparasi =
+                moment().format("YYYY") - 2 + " s/d " + moment().format("YYYY");
+            } else {
+              this.summary.dateKomparasi = moment().format("YYYY");
+            }
+            axios
+              .post(
+                "https://apps2pay.mkpmobile.com/dashboard/chart_komparasi",
+                {
+                  show: this.formDaily.show,
+                  type: this.formDaily.type,
+                  corporate: this.formFilter.corporate,
+                }
+              )
+              .then((response) => {
+                this.$refs.chartKomparasi.updateOptions({
+                  xaxis: {
+                    categories: response.data["chartCollect"]["categories"],
+                  },
+                });
+                this.$refs.chartKomparasi.updateSeries(
+                  response.data["chartCollect"]["seriesAmount"]
+                );
+
+                this.payloadKomparasiGrafik = response.data["chartCollect"];
+              })
+              .catch((e) => {
+                basicFormError(e);
+              });
+          },
+          vueChangedTrafik() {
+            axios
+              .post(
+                "https://apps2pay.mkpmobile.com/dashboard/update_chart_trafik",
+                {
+                  corporate: this.formFilter.corporate,
+                  date: this.formFilter.forDate,
+                }
+              )
+              .then((response) => {
+                this.$refs.chartTiketTrafik.updateOptions({
+                  xaxis: {
+                    categories: response.data["categories"],
+                  },
+                });
+                this.$refs.chartTiketTrafik.updateSeries(
+                  response.data["series"]
+                );
+              })
+              .catch((e) => {
+                basicFormError(e);
+              });
+          },
+        },
+      });
+    </script>
+    <!-- END PAGE LEVEL JS-->
+  </body>
+</html>
