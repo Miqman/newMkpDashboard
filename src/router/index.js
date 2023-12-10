@@ -1,3 +1,5 @@
+import { storeToRefs } from "pinia";
+import { useAuthStore } from "src/stores/auth-store";
 import { route } from "quasar/wrappers";
 import {
   createRouter,
@@ -34,15 +36,18 @@ export default route(function (/* { store, ssrContext } */) {
   });
 
   Router.beforeEach((to, from, next) => {
-    const authen = localStorage.getItem("token");
+    // const authen = localStorage.getItem("token");
+    const authStore = useAuthStore();
+    const { getUser } = storeToRefs(authStore);
+    const token = getUser.value?.token;
 
     // const store = useLoginStore();
     // const { tokenUser } = storeToRefs(store);
     // // console.log(tokenUser._object.tokenUser, "<<<<<");
     // const token = tokenUser._object.tokenUser;
 
-    if (to.name === "loginPage" && authen) next({ name: "homePage" });
-    else if (to.name === "homePage" && !authen) next({ name: "loginPage" });
+    if (to.name === "loginPage" && token) next({ name: "homePage" });
+    else if (to.name === "homePage" && !token) next({ name: "loginPage" });
     else next();
   });
 

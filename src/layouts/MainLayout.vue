@@ -79,6 +79,8 @@
 <script>
 import { defineComponent, ref } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
+import { useAuthStore } from "src/stores/auth-store";
+import { mapActions } from "pinia";
 
 export default defineComponent({
   name: "MainLayout",
@@ -145,10 +147,11 @@ export default defineComponent({
   },
 
   methods: {
+    ...mapActions(useAuthStore, ["logout"]),
     toPagePurpose(page) {
       // console.log(page.name, "cek page to");
       if (page.name == "loginPage") {
-        localStorage.clear();
+        this.logout(page.name);
       }
       this.linkActive = page.name;
       this.$router.push(page);

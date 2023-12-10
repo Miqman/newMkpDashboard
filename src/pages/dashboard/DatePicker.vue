@@ -20,7 +20,7 @@
         style="max-height: 100vh"
         class="row scroll justify-center"
       >
-        <q-date range v-model="dateModelDefault"></q-date>
+        <q-date range v-model="dateModelDefault" mask="YYYY-MM-DD"></q-date>
       </q-card-section>
 
       <q-separator />
@@ -35,9 +35,10 @@
 
 <script>
 import { ref } from "vue";
-import moment from "moment";
+import moment from "moment/min/moment-with-locales";
 import { mapWritableState } from "pinia";
-import { useTransaksiStore } from "src/stores/transaksi-store";
+import { useDashboardStore } from "src/stores/dashboard-store";
+moment.locale("id");
 
 export default {
   name: "DatePicker",
@@ -58,7 +59,7 @@ export default {
     dateFormat: {
       type: String,
       // default: "YYYY-MM-DD HH:mm",
-      default: "YYYY/MM/DD",
+      default: "YYYY-MM-DD",
     },
   },
   data() {
@@ -94,7 +95,7 @@ export default {
   },
   computed: {
     //   ...mapWritableState(useExampleStore, ["dateStartEnd"]),
-    ...mapWritableState(useTransaksiStore, ["dateStartEnd", "defaultDate"]),
+    ...mapWritableState(useDashboardStore, ["dateStartEnd", "defaultDate"]),
     displayDate() {
       if (this.dateModelDefault) {
         if (typeof this.dateModelDefault === "string") {
@@ -109,6 +110,7 @@ export default {
   },
 
   created() {
+    console.log(this.dateStartEnd, "<<<<");
     this.dateStartEnd = this.dateModelDefault;
     // this.defaultDate = this.dateModelDefault;
     // console.log(this.dateStartEnd, "<<<<");

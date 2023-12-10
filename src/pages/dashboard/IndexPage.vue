@@ -68,12 +68,14 @@
       <div
         class="col-md col-xs-12 q-pa-md"
         style="background: linear-gradient(to bottom right, #37d5d6, #36096d)"
+        v-for="(item, index) in cardSummaryData"
+        :key="index"
       >
         <div class="q-mb-lg">
           <span
             class="text-white rounded bgOpacity q-px-md q-py-xs"
             style="font-size: 16px"
-            >Total Dpp</span
+            >{{ item.trx_category }}</span
           >
         </div>
 
@@ -82,9 +84,9 @@
             class="col-6 text-white text-weight-regular"
             style="font-size: 28px"
           >
-            {{ formatRp(subTotal) }}
+            {{ formatRp(item.total_trx) }}
           </div>
-          <div class="">
+          <!-- <div class="">
             <div class="text-white" style="font-size: 14px">
               <q-btn
                 @click="
@@ -100,108 +102,18 @@
               />
               No Rek : ******{{ rekeningDpp.substring(6) }}
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="col-md col-xs-12 q-pa-md"
-        style="background: linear-gradient(to bottom right, #37d5d6, #36096d)"
-      >
-        <div class="q-mb-lg">
-          <span
-            class="text-white rounded bgOpacity q-px-md q-py-xs"
-            style="font-size: 16px"
-            >Total Pajak</span
-          >
-        </div>
-
-        <div class="text-right q-gutter-sm">
-          <div
-            class="col-6 text-white text-weight-regular"
-            style="font-size: 28px"
-          >
-            {{ formatRp(totPajak) }}
-          </div>
-          <div class="">
-            <div class="text-white" style="font-size: 14px">
-              <q-btn
-                @click="
-                  curRek = 'Pajak';
-                  prompt = true;
-                  newRek = rekeningPajak;
-                "
-                round
-                color="white"
-                icon="edit"
-                flat
-                size="sm"
-              />
-              No Rek : ******{{ rekeningPajak.substring(6) }}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="col-md col-xs-12 q-pa-md"
-        style="background: linear-gradient(to bottom right, #37d5d6, #36096d)"
-      >
-        <div class="q-mb-lg">
-          <span
-            class="text-white rounded bgOpacity q-px-md q-py-xs"
-            style="font-size: 16px"
-            >Total Pembayaran</span
-          >
-        </div>
-
-        <div class="text-right q-gutter-sm">
-          <div
-            class="col-6 text-white text-weight-regular"
-            style="font-size: 28px"
-          >
-            {{ formatRp(totHargaJual) }}
-          </div>
-          <div class="">
-            <div class="text-white" style="font-size: 14px">
-              <!-- {{ dateCard }} -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="col-md col-xs-12 q-pa-md"
-        style="background: linear-gradient(to bottom right, #37d5d6, #36096d)"
-      >
-        <div class="q-mb-lg">
-          <span
-            class="text-white rounded bgOpacity q-px-md q-py-xs"
-            style="font-size: 16px"
-            >Total Transaksi</span
-          >
-        </div>
-
-        <div class="text-right q-gutter-sm">
-          <div
-            class="col-6 text-white text-weight-regular"
-            style="font-size: 28px"
-          >
-            {{ recordsTotal }}
-          </div>
-          <div class="">
-            <div class="text-white" style="font-size: 14px">
-              <!-- {{ dateCard }} -->
-            </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
     <!-- end card status header -->
 
-    <RevenueChart />
+    <RevenueChart v-if="showOtherData" />
 
-    <IncomeCategoryChart />
+    <IncomeCategoryChart v-if="showOtherData" />
 
     <!-- start table -->
-    <div class="q-pa-md">
+    <div class="q-pa-md" v-if="showOtherData">
       <q-table
         title="Treats"
         :rows="transactionDetail"
@@ -321,7 +233,7 @@
 <script>
 import moment from "moment";
 import { mapActions, mapState, mapWritableState } from "pinia";
-import { useTransaksiStore } from "src/stores/transaksi-store";
+import { useDashboardStore } from "src/stores/dashboard-store";
 import { ref, defineComponent } from "vue";
 import DatePicker from "./DatePicker.vue";
 import { useQuasar } from "quasar";
@@ -330,6 +242,7 @@ import ExportExcel from "../../components/ExportExcel.vue";
 
 import RevenueChart from "./components/revenueChart/index.vue";
 import IncomeCategoryChart from "./components/incomeCategoryChart/index.vue";
+import { useAuthStore } from "src/stores/auth-store";
 
 const columns = [
   {
@@ -520,6 +433,7 @@ export default defineComponent({
     const rows = ref([...originalRows]);
 
     return {
+      showOtherData: false,
       $q,
       columns,
       rows,
@@ -562,20 +476,13 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapState(useTransaksiStore, [
-      "dateStartEnd",
-      "transactionDetail",
-      "recordsTotal",
-      "subTotal",
-      "totPajak",
-      "totHargaJual",
-    ]),
-    ...mapWritableState(useTransaksiStore, ["tglFilter"]),
-    dateCard() {
-      return `${moment(this.dateStartEnd.from).format(
-        "DD-MMM-YYYY"
-      )} s/d ${moment(this.dateStartEnd.to).format("DD-MMM-YYYY")}`;
+    ...mapState(useAuthStore, ["userMkp"]),
+    ...mapState(useDashboardStore, ["transactionCategory", "dateStartEnd"]),
+    user() {
+      return this.userMkp;
     },
+    ...mapWritableState(useDashboardStore, ["tglFilter"]),
+
     excelDownloadOptions() {
       let nameExcelFile = "";
       let date = "";
@@ -627,56 +534,39 @@ export default defineComponent({
         data: resultItem,
       };
     },
+
+    cardSummaryData() {
+      const result = this.transactionCategory.filter(
+        (el) => el.trx_category != "TUNAI"
+      );
+      const ifEmptyResult = [
+        {
+          trx_category: "DEBIT",
+          total_trx: 0,
+        },
+        {
+          trx_category: "E-MONEY",
+          total_trx: 0,
+        },
+        {
+          trx_category: "QRIS",
+          total_trx: 0,
+        },
+      ];
+      if (!this.transactionCategory || this.transactionCategory.length == 0) {
+        return ifEmptyResult;
+      } else {
+        return result;
+      }
+    },
   },
 
   methods: {
-    ...mapActions(useTransaksiStore, ["getDataTrx"]),
+    ...mapActions(useDashboardStore, ["getDataTrx"]),
     async filterHandler() {
-      const dateStart = moment(this.dateStartEnd.from).format("YYYY-MM-DD");
-      const dateEnd = moment(this.dateStartEnd.to).format("YYYY-MM-DD");
-
-      const rangeStart = dateStart.split("-");
-      const rangeEnd = dateEnd.split("-");
-
-      const a = moment(rangeStart);
-      const b = moment(rangeEnd);
-      const result = b.diff(a, "days");
-
-      // let tglAwal = 0;
-      // let tglAkhir = 0;
-      // if (rangeStart.length > 1) {
-      //   tglAwal = rangeStart[2];
-      //   tglAkhir = rangeEnd[2];
-      // }
-
-      // let counter = 0;
-      // for (let i = +tglAwal; i < +tglAkhir; i++) {
-      //   counter += 1;
-      // }
-
-      if (result > 20) {
-        Notify.create({
-          position: "top",
-          type: "warning",
-          message: "maksimal range 20 hari",
-          timeout: 1300,
-        });
-      } else {
-        this.$q.loading.show({
-          message: "Sedang mengambil data, Harap tunggu",
-        });
-
-        await this.getDataTrx({ from: dateStart, to: dateEnd });
-        if (this.recordsTotal == 0) {
-          await this.getDataTrx({ from: dateStart, to: dateEnd });
-        }
-        if (this.recordsTotal == 0) {
-          await this.getDataTrx({ from: dateStart, to: dateEnd });
-        }
-        this.tglFilter = this.dateStartEnd;
-
-        this.$q.loading.hide();
-      }
+      this.$q.loading.show();
+      await this.getDataTrx(this.payloadBody());
+      this.$q.loading.hide();
     },
 
     saveNoRek() {
@@ -734,22 +624,33 @@ export default defineComponent({
     formatNumber(val) {
       return new Intl.NumberFormat("id-ID").format(val);
     },
+
+    payloadBody() {
+      // console.log(this.dateStartEnd, "cek date");
+      let tgl_awal = "";
+      let tgl_akhir = "";
+      if (!this.dateStartEnd) {
+        //is empty
+        tgl_awal = moment(this.dateRange.start).format("YYYY-MM-DD");
+        tgl_akhir = moment(this.dateRange.end).format("YYYY-MM-DD");
+      } else {
+        tgl_awal = this.dateStartEnd.from;
+        tgl_akhir = this.dateStartEnd.to;
+      }
+      const userId = this.user.id,
+        startDate = tgl_awal,
+        endDate = tgl_akhir;
+      return {
+        userId,
+        startDate,
+        endDate,
+      };
+    },
   },
   async created() {
-    // this.$q.loading.show({
-    //   message: "Sedang mengambil data, Harap tunggu",
-    // });
-    // await this.getDataTrx({
-    //   from: moment(moment().startOf("month").toDate()).format("YYYY-MM-DD"),
-    //   to: moment(moment().endOf("month").toDate()).format("YYYY-MM-DD"),
-    // });
-    // while (this.recordsTotal == 0) {
-    //   await this.getDataTrx({
-    //     from: moment(moment().startOf("month").toDate()).format("YYYY-MM-DD"),
-    //     to: moment(moment().endOf("month").toDate()).format("YYYY-MM-DD"),
-    //   });
-    // }
-    // this.$q.loading.hide();
+    this.$q.loading.show();
+    await this.getDataTrx(this.payloadBody());
+    this.$q.loading.hide();
   },
 
   components: { DatePicker, ExportExcel, RevenueChart, IncomeCategoryChart },

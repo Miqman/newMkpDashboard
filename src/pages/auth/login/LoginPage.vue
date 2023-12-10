@@ -11,10 +11,10 @@
         <q-card rounded bordered class="q-pa-lg shadow-2">
           <div class="text-medium" style="font-size: 30px">Login</div>
           <q-card-section>
-            <q-form @reset="onReset" class="q-gutter-md">
+            <q-form class="q-gutter-md">
               <q-input
                 filled
-                v-model="login.username"
+                v-model="loginPayload.username"
                 label="Username"
                 hint="your username"
                 lazy-rules
@@ -26,7 +26,7 @@
               <q-input
                 filled
                 :type="isPwd ? 'password' : 'text'"
-                v-model="login.password"
+                v-model="loginPayload.password"
                 label="Password"
                 lazy-rules
                 :rules="[
@@ -53,7 +53,8 @@
               size="lg"
               class="full-width"
               label="Login"
-              @click="loginHandle(login)"
+              :loading="loading"
+              @click="loginHandle(loginPayload)"
             >
               <!-- @click.prevent="loginButton(login)" -->
             </q-btn>
@@ -67,11 +68,14 @@
 <script>
 import { ref } from "vue";
 import { Notify } from "quasar";
+import { useAuthStore } from "src/stores/auth-store";
+import { mapActions, mapState } from "pinia";
 
 export default {
   data() {
     return {
-      login: {
+      loading: false,
+      loginPayload: {
         username: "",
         password: "",
       },
@@ -82,34 +86,37 @@ export default {
     //   ...mapState(useAuthStore, ["loadingAuth"]),
   },
   methods: {
-    //   ...mapActions(useAuthStore, ["loginhandle"]),
+    ...mapActions(useAuthStore, ["login"]),
     async loginHandle(login) {
-      try {
-        console.log(login);
-        this.loading = true;
-        setTimeout(() => {
-          this.loading = false;
-        }, 3000);
+      this.loading = true;
+      await this.login(login);
+      this.loading = false;
+      // try {
+      //   console.log(login);
+      //   this.loading = true;
+      //   setTimeout(() => {
+      //     this.loading = false;
+      //   }, 3000);
 
-        const user = { username: "admincartenz", password: "admincartenz" };
-        if (
-          login.username != user.username ||
-          login.password != user.password
-        ) {
-          Notify.create({
-            position: "top",
-            type: "warning",
-            message: "username/password salah",
-            timeout: 1250,
-          });
-        } else {
-          localStorage.username = user.username;
-          localStorage.token = "token1234";
-          this.$router.push("/");
-        }
-      } catch (error) {
-        console.log(error);
-      }
+      //   const user = { username: "admincartenz", password: "admincartenz" };
+      //   if (
+      //     login.username != user.username ||
+      //     login.password != user.password
+      //   ) {
+      //     Notify.create({
+      //       position: "top",
+      //       type: "warning",
+      //       message: "username/password salah",
+      //       timeout: 1250,
+      //     });
+      //   } else {
+      //     localStorage.username = user.username;
+      //     localStorage.token = "token1234";
+      //     this.$router.push("/");
+      //   }
+      // } catch (error) {
+      //   console.log(error);
+      // }
     },
   },
 };

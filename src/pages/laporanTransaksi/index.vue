@@ -13,7 +13,7 @@
           icon="home"
           :to="{ name: 'homePage' }"
         />
-        <q-breadcrumbs-el label="Laporan" icon="widgets" />
+        <!-- <q-breadcrumbs-el label="Laporan" icon="widgets" /> -->
         <q-breadcrumbs-el label="List Transaksi" icon="navigation" />
       </q-breadcrumbs>
     </div>
@@ -55,7 +55,7 @@
             <q-input
               v-model="displayDateTo"
               readonly
-              label="Start Date"
+              label="End Date"
               @click="openDateTo = true"
             >
               <template v-slot:append>
@@ -77,7 +77,7 @@
             </q-input>
           </div>
         </div>
-        <div class="row q-col-gutter-md">
+        <div class="row q-col-gutter-md" v-if="isAnotherFilter">
           <div class="col-12 col-md-6">
             <q-select
               v-model="statusTrx"
@@ -93,7 +93,7 @@
             />
           </div>
         </div>
-        <div class="row q-col-gutter-md">
+        <div class="row q-col-gutter-md" v-if="isAnotherFilter">
           <div class="col-12 col-md-6">
             <q-select
               v-model="corporate"
@@ -104,7 +104,14 @@
         </div>
 
         <div class="q-my-lg">
-          <q-btn color="primary" glossy icon="sync" label="Filter" no-caps />
+          <q-btn
+            color="primary"
+            glossy
+            icon="sync"
+            label="Filter"
+            no-caps
+            @click="submitFilter(dateFrom, dateTo)"
+          />
         </div>
       </q-card-section>
     </q-card>
@@ -119,7 +126,7 @@
             Transaksi
           </div>
         </div>
-        <div>
+        <ExportExcel v-bind="excelDownloadOptions">
           <q-btn
             color="primary"
             glossy
@@ -127,15 +134,15 @@
             label="Export Excel"
             no-caps
           />
-        </div>
+        </ExportExcel>
       </q-card-section>
 
       <q-card-section class="q-px-lg">
         <q-table
           flat
           bordered
-          title="Treats"
-          :rows="rows"
+          title="List Transaksi"
+          :rows="rowTableListTrx"
           :columns="columns"
           :filter="filter"
           row-key="name"
@@ -156,15 +163,29 @@
 
           <template v-slot:header-cell="props">
             <q-th :props="props">
-              <q-icon name="lock_open" size="1.5em" />
+              <!-- <q-icon name="lock_open" size="1.5em" /> -->
               {{ props.col.label }}
             </q-th>
           </template>
 
-          <template v-slot:body-cell="props">
-            <q-td :props="props">
-              {{ props.value }}
-            </q-td>
+          <template v-slot:body="props">
+            <q-tr :props="props">
+              <q-td>
+                {{ props.row.trx_id }}
+              </q-td>
+              <q-td>
+                {{ props.row.trx_date }}
+              </q-td>
+              <q-td>
+                {{ props.row.trx_category }}
+              </q-td>
+              <q-td>
+                {{ props.row.trx_total }}
+              </q-td>
+              <q-td>
+                {{ props.row.trx_status }}
+              </q-td>
+            </q-tr>
           </template>
         </q-table>
       </q-card-section>
@@ -175,14 +196,24 @@
 
 <script>
 import moment from "moment";
+import { useAuthStore } from "src/stores/auth-store";
+import { mapState, mapActions } from "pinia";
+import { useDashboardStore } from "src/stores/dashboard-store";
+import ExportExcel from "../../components/ExportExcel.vue";
+
 export default {
   name: "LaporanTransaksi",
   data() {
     return {
+      isAnotherFilter: false,
       dateFrom: "",
       dateTo: "",
       openDateFrom: false,
       openDateTo: false,
+      dateRange: {
+        start: moment().startOf("month").toDate(),
+        end: moment().endOf("month").toDate(),
+      },
 
       filter: "",
       statusTrx: "",
@@ -248,6 +279,11 @@ export default {
     };
   },
   computed: {
+    ...mapState(useAuthStore, ["userMkp"]),
+    ...mapState(useDashboardStore, ["listTransaction"]),
+    user() {
+      return this.userMkp;
+    },
     displayDateFrom() {
       return this.dateFrom;
     },
@@ -258,38 +294,44 @@ export default {
     columns() {
       return [
         {
-          name: "name",
-          required: true,
-          label: "Dessert (100g serving)",
+          name: "trx_id",
+          label: "id",
           align: "left",
-          field: (row) => row.name,
+          field: (row) => row.trx_id,
           format: (val) => `${val}`,
-          sortable: true,
+          sortable: false,
         },
         {
-          name: "calories",
-          align: "center",
-          label: "Calories",
-          field: "calories",
-          sortable: true,
-        },
-        { name: "fat", label: "Fat (g)", field: "fat", sortable: true },
-        { name: "carbs", label: "Carbs (g)", field: "carbs" },
-        { name: "protein", label: "Protein (g)", field: "protein" },
-        { name: "sodium", label: "Sodium (mg)", field: "sodium" },
-        {
-          name: "calcium",
-          label: "Calcium (%)",
-          field: "calcium",
-          sortable: true,
-          sort: (a, b) => parseInt(a, 10) - parseInt(b, 10),
+          name: "trx_date",
+          label: "Tanggal",
+          align: "left",
+          field: (row) => row.trx_date,
+          format: (val) => `${val}`,
+          sortable: false,
         },
         {
-          name: "iron",
-          label: "Iron (%)",
-          field: "iron",
-          sortable: true,
-          sort: (a, b) => parseInt(a, 10) - parseInt(b, 10),
+          name: "trx_category",
+          label: "Kategori",
+          align: "left",
+          field: (row) => row.trx_category,
+          format: (val) => `${val}`,
+          sortable: false,
+        },
+        {
+          name: "trx_total",
+          label: "Total",
+          align: "left",
+          field: (row) => row.trx_total,
+          format: (val) => `${val}`,
+          sortable: false,
+        },
+        {
+          name: "trx_status",
+          label: "Status",
+          align: "left",
+          field: (row) => row.trx_status,
+          format: (val) => `${val}`,
+          sortable: false,
         },
       ];
     },
@@ -397,18 +439,69 @@ export default {
         },
       ];
     },
+    rowTableListTrx() {
+      return this.listTransaction;
+    },
+
+    excelDownloadOptions() {
+      let nameExcelFile = "";
+      let date = `${this.dateFrom}-${this.dateTo}`;
+
+      nameExcelFile = `${date}_List-Transaksi.xlsx`;
+
+      return {
+        worksheet: "Tabel List Transaksi",
+        name: nameExcelFile,
+        fields: {
+          Id: "trx_id",
+          Tanggal: "trx_date",
+          Kategori: "trx_category",
+          Total: "trx_total",
+          Status: "trx_status",
+        },
+
+        data: this.rowTableListTrx,
+      };
+    },
   },
   methods: {
+    ...mapActions(useDashboardStore, ["getListTrx"]),
     submitDateFrom(date) {
       this.openDateFrom = false;
     },
     submitDateTo(date) {
       this.openDateTo = false;
     },
+
+    async submitFilter(from, to) {
+      this.$q.loading.show();
+      await this.getListTrx(this.payloadBody());
+      this.$q.loading.hide();
+    },
+    payloadBody() {
+      // console.log(this.dateStartEnd, "cek date");
+      const userId = this.user.id,
+        startDate = this.dateFrom,
+        endDate = this.dateTo;
+      return {
+        userId,
+        startDate,
+        endDate,
+      };
+    },
+  },
+  async mounted() {
+    this.$q.loading.show();
+    await this.getListTrx(this.payloadBody());
+    this.$q.loading.hide();
   },
   beforeMount() {
-    this.dateFrom = moment().format("YYYY-MM-DD");
-    this.dateTo = moment().format("YYYY-MM-DD");
+    this.dateFrom = moment(this.dateRange.start).format("YYYY-MM-DD");
+    this.dateTo = moment(this.dateRange.end).format("YYYY-MM-DD");
+  },
+
+  components: {
+    ExportExcel,
   },
 };
 </script>

@@ -1,5 +1,7 @@
 import { boot } from "quasar/wrappers";
 import axios from "axios";
+import { useAuthStore } from "src/stores/auth-store";
+import { storeToRefs } from "pinia";
 
 // Be careful when using SSR for cross-request state pollution
 // due to creating a Singleton instance here;
@@ -7,15 +9,20 @@ import axios from "axios";
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const api = axios.create({ baseURL: process.env.API });
+
+const api = axios.create({ baseURL: process.env.URL_API });
 
 // Add a request interceptor
 api.interceptors.request.use(
   (config) => {
+    const authStore = useAuthStore();
+    const { getUser } = storeToRefs(authStore);
+    // console.log(getUser.value?.token, "cek token from axios authh");
+
     // Do something before request is sent
-    config.headers["Content-Type"] = "application/x-www-form-urlencoded";
+    config.headers["Content-Type"] = "application/json";
     // Jika Anda memiliki token otentikasi, tambahkan di sini
-    // config.headers['Authorization'] = `Bearer ${yourToken}`;
+    config.headers["Authorization"] = `Bearer ${getUser.value?.token}`;
     return config;
   },
   (error) => {
